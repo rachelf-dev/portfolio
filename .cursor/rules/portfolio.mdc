@@ -1,0 +1,61 @@
+---
+description: Rules for the personal developer portfolio website
+alwaysApply: true
+---
+
+# Project
+Personal portfolio website of a software developer. Purpose: get a job.
+Visitors are recruiters and technical interviewers. The site is the developer's
+main professional presence (there is no LinkedIn profile).
+Full specification: @SPEC.md. Content to display: @CONTENT.md.
+Visual reference: the `design/` folder (Stitch HTML + PNG screenshots).
+
+# Stack
+- Next.js (App Router), TypeScript (strict, no `any`), Tailwind CSS
+- Framer Motion only if needed, minimal use
+- Deploy target: Vercel. No database: all content lives in `data/*.ts`
+
+# Language and direction
+- Site language: English only. Direction: LTR.
+
+# Design
+- Dark, technical theme. Use `design/` as a visual reference.
+- Do NOT paste the Stitch HTML as is. Convert it into small React components.
+- Put colors and fonts in the Tailwind theme (tokens), never hardcode them repeatedly.
+- Palette: bg #0B0F19, card #111827, border #1F2937, text #E5E7EB,
+  muted #9CA3AF, one accent color (cyan #22D3EE unless the design says otherwise).
+- Fonts: Inter (or Geist Sans) for text, JetBrains Mono for tags, code and the name in the top bar.
+
+# Structure
+- Home page `/`: Top Bar, Hero, Projects grid, About, Contact, Footer.
+- Project page `/projects/[slug]`: generated from `data/projects.ts`.
+- Number of projects is flexible. Never hardcode a count. Render from data.
+
+# Hard constraints (do not add these, even if the design suggests them)
+- No navigation menu, no anchor links, no hamburger menu.
+  Top Bar = name as plain text (left) + two buttons: Resume, Contact (right).
+  On project pages the buttons are replaced by a "Back to projects" link.
+- No logo.
+- No LinkedIn links or buttons anywhere.
+- No Experience / work history section.
+- Education is a single line inside the About section.
+- Project page has NO: challenges and solutions, results and learnings, screenshot gallery.
+  Project page sections only: back link + prev/next, title + tagline, meta row,
+  Live Demo + View Code buttons, main image or short demo, The Problem,
+  The Solution, Tech Stack (with a reason per technology), bottom CTA.
+
+# Code quality
+- Server components by default. Use "use client" only when really needed.
+- Use `next/image` for images. Always provide alt text.
+- Semantic HTML (header, main, section, footer), valid heading order.
+- Accessibility: WCAG AA contrast, full keyboard navigation, visible focus states.
+- Respect `prefers-reduced-motion`. Animations short (200-400ms).
+- Mobile first. Check 360, 768, 1024, 1440. No horizontal scroll.
+- Target: Lighthouse 90+ in all categories, no console errors.
+- Small components, one responsibility each. No unused dependencies.
+
+# Workflow
+- Work one component at a time. Do not modify unrelated files.
+- Before building a component, look at the matching file in `design/`.
+- If the design and SPEC.md conflict, follow the "Hard constraints" above and tell me.
+- Ask before adding any new dependency.

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100vh;background-color:#0f131c;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary-container": "#6e4600", "on-surface": "#dfe2ee", "error-container": "#93000a", "border-subtle": "#1E293B", "tertiary": "#ffd6a3", "surface-card": "#111827", "surface-variant": "#31353e", "surface-container": "#1c2028", "surface-tint": "#2fd9f4", "surface": "#0f131c", "secondary-fixed-dim": "#d0bcff", "on-secondary-container": "#c4abff", "surface-dim": "#0f131c", "on-primary-fixed-variant": "#004e5a", "surface-container-lowest": "#0a0e16", "on-tertiary-fixed-variant": "#643f00", "surface-container-highest": "#31353e", "background": "#0f131c", "on-tertiary-fixed": "#2a1800", "surface-subtle": "#0D1322", "primary-fixed": "#a2eeff", "outline": "#859397", "on-primary": "#00363e", "secondary": "#d0bcff", "on-background": "#dfe2ee", "surface-container-high": "#262a33", "on-secondary-fixed": "#23005c", "on-error-container": "#ffdad6", "secondary-container": "#571bc1", "text-muted": "#64748B", "outline-variant": "#3c494c", "error": "#ffb4ab", "primary-container": "#22d3ee", "text-secondary": "#94A3B8", "secondary-fixed": "#e9ddff", "primary-fixed-dim": "#2fd9f4", "on-surface-variant": "#bbc9cd", "tertiary-fixed": "#ffddb5", "glow-violet": "rgba(139, 92, 246, 0.15)", "on-secondary": "#3c0091", "surface-base": "#080C14", "primary": "#8aebff", "on-primary-fixed": "#001f25", "on-primary-container": "#005763", "on-error": "#690005", "tertiary-container": "#ffb13b", "tertiary-fixed-dim": "#ffb957", "glow-cyan": "rgba(34, 211, 238, 0.15)", "inverse-primary": "#006877", "surface-container-low": "#181c24", "surface-bright": "#353942", "text-primary": "#F8FAFC", "on-tertiary": "#462b00", "on-secondary-fixed-variant": "#5516be", "inverse-on-surface": "#2c3039", "inverse-surface": "#dfe2ee", "border-medium": "#334155" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "gutter": "1.5rem", "space-xs": "0.25rem", "gutter-mobile": "1rem", "space-sm": "0.5rem", "space-xl": "2.5rem", "margin-mobile": "1rem", "space-lg": "1.5rem", "margin": "2rem", "space-md": "1rem" }, fontFamily: { "headline-lg-mobile": ["Geist"], "headline-md": ["Geist"], "brand-mono": ["JetBrains Mono"], "headline-sm": ["Geist"], "body-md": ["Geist"], "body-sm": ["Geist"], "label-code": ["JetBrains Mono"], "display-mobile": ["Geist"], "headline-lg": ["Geist"], "display": ["Geist"], "label-code-sm": ["JetBrains Mono"], "body-lg": ["Geist"] }, fontSize: { "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "brand-mono": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-code": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500" }], "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-code-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface-base/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><div class="w-2 h-2 rounded-full bg-primary-container animate-pulse flex-shrink-0"></div><span class="font-brand-mono text-brand-mono text-primary tracking-tight truncate">maya.sh</span><span class="hidden font-label-code-sm text-label-code-sm text-text-muted">/dev</span></div><div class="flex items-center gap-space-xs flex-shrink-0"><a class="h-11 px-3 flex items-center justify-center font-label-code-sm text-label-code-sm rounded-lg bg-surface-subtle text-text-secondary hover:text-text-primary hover:bg-surface-card transition-colors" data-path="resume" href="#"><span class="material-symbols-outlined text-[16px] mr-1">description</span>CV</a><a class="h-11 px-3 flex items-center justify-center font-label-code-sm text-label-code-sm rounded-lg bg-primary-container text-on-primary font-semibold hover:bg-primary transition-colors" data-path="contact" href="#"><span class="material-symbols-outlined text-[16px] mr-1">terminal</span>Ping</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1 flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-20 bg-surface"><div class="flex flex-col w-full px-margin-mobile pb-space-xl">
+<!-- Ambient backdrop radial glow -->
+<div class="relative w-full overflow-hidden flex flex-col gap-space-lg pt-space-md">
+<!-- Hero Header / Status Module -->
+<section class="flex flex-col gap-space-md">
+<!-- Status & npx interactive pill row -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-label-code-sm text-label-code-sm text-primary tracking-wide uppercase">Open to Opportunities</span>
+</div>
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-subtle text-text-secondary hover:text-text-primary active:scale-95 transition-all" id="copy-npx-btn">
+<span class="material-symbols-outlined text-[14px] text-primary">terminal</span>
+<span class="font-label-code-sm text-label-code-sm">npx maya-portfolio</span>
+<span class="material-symbols-outlined text-[13px] text-text-muted ml-0.5" id="npx-copy-icon">content_copy</span>
+</button>
+</div>
+<!-- Identity & Subtitle -->
+<div class="flex flex-col gap-1">
+<h1 class="font-display-mobile text-display-mobile text-text-primary tracking-tight">
+          Maya Cohen
+        </h1>
+<p class="font-headline-sm text-headline-sm bg-gradient-to-r from-primary via-primary-container to-secondary bg-clip-text text-transparent">
+          Full-Stack Software Developer
+        </p>
+</div>
+<!-- Short Bio -->
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+        I build scalable web applications with React, TypeScript and Node.js, focusing on clean architecture, high performance and great user experience.
+      </p>
+<!-- Action Buttons Row -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<a class="h-10 px-3.5 flex items-center justify-center gap-1.5 rounded-lg bg-surface-container-high text-text-primary font-label-code-sm text-label-code-sm shadow-md hover:bg-surface-variant active:scale-95 transition-all" href="https://github.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px] text-primary">code</span>
+<span>GitHub</span>
+</a>
+<a class="h-10 px-3.5 flex items-center justify-center gap-1.5 rounded-lg bg-primary-container text-on-primary font-label-code-sm text-label-code-sm font-semibold shadow-[0_0_16px_rgba(34,211,238,0.25)] hover:bg-primary active:scale-95 transition-all" href="mailto:maya.cohen.dev@example.com">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span>Email</span>
+</a>
+<a class="h-10 px-3.5 flex items-center justify-center gap-1.5 rounded-lg bg-surface-subtle text-text-secondary hover:text-text-primary font-label-code-sm text-label-code-sm shadow-sm active:scale-95 transition-all" href="#" id="download-cv-btn">
+<span class="material-symbols-outlined text-[16px] text-secondary">download</span>
+<span>Resume</span>
+</a>
+</div>
+</section>
+<!-- Stat Metrics Strip: 2x2 Bento Matrix -->
+<section class="grid grid-cols-2 gap-space-sm">
+<div class="flex flex-col p-space-md rounded-xl bg-surface-card shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-1">
+<span class="font-display-mobile text-display-mobile text-primary tracking-tight">4+</span>
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</div>
+<span class="font-label-code text-label-code text-text-primary">Yrs Architecture</span>
+<span class="font-label-code-sm text-label-code-sm text-text-muted mt-0.5">Distributed &amp; Cloud</span>
+</div>
+<div class="flex flex-col p-space-md rounded-xl bg-surface-card shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-1">
+<span class="font-display-mobile text-display-mobile text-secondary tracking-tight">15+</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<span class="font-label-code text-label-code text-text-primary">Shipped Apps</span>
+<span class="font-label-code-sm text-label-code-sm text-text-muted mt-0.5">Production Scaled</span>
+</div>
+<div class="flex flex-col p-space-md rounded-xl bg-surface-card shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-1">
+<span class="font-display-mobile text-display-mobile text-tertiary-container tracking-tight">99.9%</span>
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+</div>
+<span class="font-label-code text-label-code text-text-primary">SLO Reliability</span>
+<span class="font-label-code-sm text-label-code-sm text-text-muted mt-0.5">Zero Data Inversion</span>
+</div>
+<div class="flex flex-col p-space-md rounded-xl bg-surface-card shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-1">
+<span class="font-display-mobile text-display-mobile text-primary-fixed-dim tracking-tight">100%</span>
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim"></span>
+</div>
+<span class="font-label-code text-label-code text-text-primary">Type Safe</span>
+<span class="font-label-code-sm text-label-code-sm text-text-muted mt-0.5">Strict End-to-End</span>
+</div>
+</section>
+<!-- Featured Projects Section -->
+<section class="flex flex-col gap-space-md pt-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">terminal</span>
+<h2 class="font-headline-sm text-headline-sm text-text-primary">Featured Work</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-text-muted">4 Production Systems</span>
+</div>
+<!-- Vertical Card Stack -->
+<div class="flex flex-col gap-space-md">
+<!-- Project 1: Distributed Cache & Message Broker -->
+<article class="flex flex-col rounded-xl bg-surface-card overflow-hidden shadow-md group">
+<div class="relative w-full aspect-video bg-surface-container-lowest overflow-hidden flex flex-col p-3 justify-between">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container/70"></span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-text-muted">cluster://raft-node-03</span>
+</div>
+<!-- Sleek Vector Micro-Dashboard / Diagram -->
+<div class="my-auto py-1">
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-surface-subtle p-2 rounded-lg flex flex-col gap-1">
+<span class="font-label-code-sm text-[10px] text-text-muted">RAFT STATE</span>
+<span class="font-label-code text-[12px] text-primary">LEADER (P0)</span>
+</div>
+<div class="bg-surface-subtle p-2 rounded-lg flex flex-col gap-1">
+<span class="font-label-code-sm text-[10px] text-text-muted">IO THROUGHPUT</span>
+<span class="font-label-code text-[12px] text-secondary">42.8k ops/s</span>
+</div>
+<div class="bg-surface-subtle p-2 rounded-lg flex flex-col gap-1">
+<span class="font-label-code-sm text-[10px] text-text-muted">P99 LATENCY</span>
+<span class="font-label-code text-[12px] text-primary-fixed">1.82 ms</span>
+</div>
+</div>
+</div>
+<!-- Terminal log output simulation -->
+<div class="flex items-center justify-between font-label-code-sm text-[11px] text-text-secondary bg-surface-base px-2 py-1 rounded">
+<span class="text-primary">&gt; consensus: commit_idx=84920</span>
+<span class="text-text-muted">gRPC / TLS</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-sm">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Distributed Cache &amp; Message Broker</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">High-throughput in-memory datastore with Raft consensus and sub-millisecond p99 replication.</p>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-primary">Go</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-text-secondary">Raft</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-secondary">gRPC</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-text-secondary">Docker</span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-code text-label-code text-primary-container hover:text-primary pt-1" href="#">
+<span>Deep Dive</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Project 2: CloudCost Radar -->
+<article class="flex flex-col rounded-xl bg-surface-card overflow-hidden shadow-md group">
+<div class="relative w-full aspect-video bg-surface-container-lowest overflow-hidden flex flex-col p-3 justify-between">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container/70"></span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-text-muted">finops://aws-k8s-cost</span>
+</div>
+<!-- Mini SVG Sparkline Cost Chart -->
+<div class="w-full flex items-center justify-center py-1">
+<svg class="w-full h-16" fill="none" viewbox="0 0 300 70">
+<path d="M0,50 Q40,40 80,45 T160,25 T240,15 T300,8" stroke="#8aebff" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M0,50 Q40,40 80,45 T160,25 T240,15 T300,8 L300,70 L0,70 Z" fill="url(#cyan-grad)" opacity="0.25"></path>
+<circle cx="300" cy="8" fill="#22d3ee" r="4"></circle>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="cyan-grad" x1="0" x2="0" y1="0" y2="70">
+<stop stop-color="#22d3ee"></stop>
+<stop offset="1" stop-color="#22d3ee" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<div class="flex items-center justify-between font-label-code-sm text-[11px] text-text-secondary bg-surface-base px-2 py-1 rounded">
+<span class="text-secondary">-34.2% AWS Waste</span>
+<span class="text-text-muted">Realtime Telemetry</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-sm">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">CloudCost Radar</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Automated Kubernetes resource rightsizing and multi-cloud billing anomaly detection engine.</p>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-secondary">TypeScript</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-primary">React</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-text-secondary">Node.js</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-text-secondary">ClickHouse</span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-code text-label-code text-secondary hover:text-secondary-fixed pt-1" href="#">
+<span>Deep Dive</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Project 3: DevFlow Workspace -->
+<article class="flex flex-col rounded-xl bg-surface-card overflow-hidden shadow-md group">
+<div class="relative w-full aspect-video bg-surface-container-lowest overflow-hidden flex flex-col p-3 justify-between">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container/70"></span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-text-muted">devflow://sync-active</span>
+</div>
+<!-- Terminal code preview mockup -->
+<div class="bg-surface-base p-2.5 rounded-lg flex flex-col gap-1 font-label-code-sm text-[11px]">
+<div class="flex items-center gap-2 text-text-muted">
+<span class="text-secondary font-bold">1</span>
+<span>export const session = createLiveSession({</span>
+</div>
+<div class="flex items-center gap-2 text-text-secondary pl-3">
+<span class="text-secondary font-bold">2</span>
+<span class="text-primary-container">crdt: "yjs-webrtc"</span>, latencyMode: "instant"
+              </div>
+<div class="flex items-center gap-2 text-text-muted">
+<span class="text-secondary font-bold">3</span>
+<span>});</span>
+</div>
+</div>
+<div class="flex items-center justify-between font-label-code-sm text-[11px] text-text-secondary bg-surface-base px-2 py-1 rounded">
+<span class="text-primary-container">Sync status: Synced</span>
+<span class="text-text-muted">24 peers active</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-sm">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">DevFlow Workspace</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Collaborative cloud IDE environment with CRDT operational transform and WebAssembly runtime.</p>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-primary">React</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-text-secondary">WebAssembly</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-secondary">CRDT</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-text-secondary">Node.js</span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-code text-label-code text-primary-container hover:text-primary pt-1" href="#">
+<span>Deep Dive</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Project 4: Sentinel Auth Service -->
+<article class="flex flex-col rounded-xl bg-surface-card overflow-hidden shadow-md group">
+<div class="relative w-full aspect-video bg-surface-container-lowest overflow-hidden flex flex-col p-3 justify-between">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container/70"></span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-text-muted">sentinel://oauth2-pki</span>
+</div>
+<div class="bg-surface-base p-2.5 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">verified_user</span>
+<div class="flex flex-col">
+<span class="font-label-code-sm text-[11px] text-text-primary">Passkey / WebAuthn</span>
+<span class="font-label-code-sm text-[10px] text-text-muted">Zero-knowledge proof</span>
+</div>
+</div>
+<span class="font-label-code-sm text-[11px] text-primary px-2 py-0.5 bg-surface-subtle rounded">Ed25519</span>
+</div>
+<div class="flex items-center justify-between font-label-code-sm text-[11px] text-text-secondary bg-surface-base px-2 py-1 rounded">
+<span class="text-primary">&gt; 120k tokens/sec validated</span>
+<span class="text-text-muted">OIDC Core</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-sm">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Sentinel Auth Service</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Stateless authentication microservice with Passkeys, cryptographic tokens, and role-based policies.</p>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-primary">Go</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-text-secondary">OAuth2</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-secondary">WebAuthn</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-subtle font-label-code-sm text-label-code-sm text-text-secondary">Redis</span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-code text-label-code text-secondary hover:text-secondary-fixed pt-1" href="#">
+<span>Deep Dive</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</article>
+</div>
+</section>
+<!-- Visual Portfolio Image Asset -->
+<div class="w-full rounded-xl overflow-hidden bg-surface-card p-1 shadow-sm">
+<img class="w-full h-44 object-cover rounded-lg" data-alt="A modern developer workstation environment in dark mode at night with glowing dual monitors displaying complex full-stack architecture diagrams, terminal logs, and code in cyan and electric purple accents on a clean desk." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1gqIzU6MYTHSQ9A4_EUpffyrb55-8zEqC8vAkNRrBjQoSPnyJF01us42qAih6A3B9rendo3nccVFRx1GIp_sTUuvKTqUNCLHEy00E02Tjuqm7xyht80CfOKEa8GKqUGpjE6HpJffxaSwqDfCcLh6X0g2l2b_PoiJKiIX-hG90WwgIxNTOgRNTBgBX0ZqKNskPyOzTRnZOxO1TB7qV1aGUStiC3fVJS99Inre-2Qrb"/>
+</div>
+<!-- About Section -->
+<section class="flex flex-col gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">person_pin</span>
+<h2 class="font-headline-sm text-headline-sm text-text-primary">Engineering Profile</h2>
+</div>
+<!-- Concise 4-line Bio -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col gap-2 shadow-sm">
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          I am a systems-focused software engineer dedicated to building resilient distributed services.
+        </p>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          With hands-on experience in full-stack architecture, I balance front-end ergonomics with backend throughput.
+        </p>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          My philosophy revolves around strong typing, deterministic state machines, and empathetic user interfaces.
+        </p>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          When not pushing code, I profile network protocols and write technical architectural breakdowns.
+        </p>
+</div>
+<!-- Education Line: Emphasizing practical project work -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col gap-1.5 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">school</span>
+<span class="font-label-code-sm text-label-code-sm text-primary uppercase">Education &amp; Foundations</span>
+</div>
+<p class="font-body-md text-body-md text-text-primary">
+          Academic Institute of Science &amp; Technology, B.Sc. in Computer Science, 2 years
+        </p>
+<p class="font-body-sm text-body-sm text-text-secondary">
+          Accelerated program focused on distributed algorithms, compiler construction, and hands-on systems programming.
+        </p>
+</div>
+<!-- Technical Arsenal: 4 Colorful Categories -->
+<div class="flex flex-col gap-space-sm">
+<h3 class="font-label-code text-label-code text-text-primary uppercase tracking-wider">Technical Arsenal</h3>
+<!-- 1. Languages -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col gap-2 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-code-sm text-label-code-sm text-primary uppercase tracking-wide">Languages</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">TypeScript</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">JavaScript</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">Go</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">SQL</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">HTML5/CSS3</span>
+</div>
+</div>
+<!-- 2. Frameworks & Runtimes -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col gap-2 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-code-sm text-label-code-sm text-secondary uppercase tracking-wide">Frameworks &amp; Core</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">React 19</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">Next.js</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">Node.js</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">Express</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">Tailwind CSS</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">GraphQL</span>
+</div>
+</div>
+<!-- 3. Databases -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col gap-2 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+<span class="font-label-code-sm text-label-code-sm text-tertiary uppercase tracking-wide">Databases &amp; Caching</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">PostgreSQL</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">Redis</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">ClickHouse</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">Prisma ORM</span>
+</div>
+</div>
+<!-- 4. Tools & Cloud -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col gap-2 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim"></span>
+<span class="font-label-code-sm text-label-code-sm text-primary-fixed-dim uppercase tracking-wide">Tools, Cloud &amp; Infra</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">Docker</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">Kubernetes</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">AWS (S3, ECS)</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">Git CI/CD</span>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-label-code-sm text-label-code-sm text-text-primary">gRPC</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section: Let's work together -->
+<section class="flex flex-col gap-space-md pt-space-xs">
+<div class="p-space-lg rounded-2xl bg-surface-card shadow-lg flex flex-col gap-space-md relative overflow-hidden">
+<!-- Glowing gradient accent line -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary-container to-secondary"></div>
+<div class="flex flex-col gap-1.5">
+<span class="font-label-code-sm text-label-code-sm text-primary uppercase tracking-wide">Dispatch Protocol</span>
+<h2 class="font-headline-md text-headline-md text-text-primary">Let's work together.</h2>
+<p class="font-body-md text-body-md text-text-secondary">
+            Looking for a resilient software engineer to solve high-concurrency challenges or build delightful interfaces? Ping my inbox.
+          </p>
+</div>
+<!-- Copyable Email Card -->
+<div class="p-space-md rounded-xl bg-surface-base flex items-center justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<span class="font-label-code-sm text-label-code-sm text-text-muted">Direct Email</span>
+<span class="font-label-code text-label-code text-text-primary truncate">maya.cohen.dev@example.com</span>
+</div>
+<button aria-label="Copy Email" class="h-10 px-3 flex items-center justify-center rounded-lg bg-surface-container-high text-primary hover:bg-surface-variant active:scale-95 transition-all flex-shrink-0" id="copy-email-trigger">
+<span class="material-symbols-outlined text-[18px]" id="copy-email-icon">content_copy</span>
+</button>
+</div>
+<!-- Action Grid: GitHub Repo & Download Resume (Strictly No LinkedIn) -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<a class="h-12 px-space-sm rounded-xl bg-surface-subtle flex items-center justify-center gap-2 text-text-primary font-label-code-sm text-label-code-sm hover:bg-surface-variant active:scale-95 transition-all" href="https://github.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px] text-primary">terminal</span>
+<span>GitHub Profile</span>
+</a>
+<a class="h-12 px-space-sm rounded-xl bg-primary-container flex items-center justify-center gap-2 text-on-primary font-semibold font-label-code-sm text-label-code-sm shadow-[0_0_18px_rgba(34,211,238,0.2)] hover:bg-primary active:scale-95 transition-all" href="#" id="download-cv-btn-footer">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Download CV</span>
+</a>
+</div>
+<!-- Fast Ping Direct Mail Action -->
+<a class="w-full h-12 rounded-xl bg-surface-container-high flex items-center justify-center gap-2 text-secondary font-label-code-sm text-label-code-sm hover:text-text-primary hover:bg-surface-variant active:scale-95 transition-all" href="mailto:maya.cohen.dev@example.com">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Send Direct Email Client</span>
+</a>
+<!-- Toast Notice (Hidden by default) -->
+<div class="hidden absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-primary-container text-on-primary font-label-code-sm text-label-code-sm shadow-lg flex items-center gap-1.5 transition-all" id="toast-pill">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span id="toast-text">Copied to clipboard!</span>
+</div>
+</div>
+</section>
+<!-- Footer Identity Minimal Meta -->
+<footer class="flex items-center justify-between pt-space-sm px-1 text-text-muted">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-label-code-sm text-[11px]">maya.sh v2.4</span>
+</div>
+<span class="font-label-code-sm text-[11px]">Built with TypeScript &amp; React</span>
+</footer>
+</div>
+</div>
+<script>
+  (function initPortfolioInteractions() {
+    function showToast(message) {
+      const toast = document.getElementById('toast-pill');
+      const toastText = document.getElementById('toast-text');
+      if (!toast || !toastText) return;
+      toastText.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2400);
+    }
+
+    // Copy npx command
+    const copyNpxBtn = document.getElementById('copy-npx-btn');
+    if (copyNpxBtn) {
+      copyNpxBtn.addEventListener('click', () => {
+        const cmd = 'npx maya-portfolio';
+        navigator.clipboard?.writeText(cmd).then(() => {
+          showToast('Command copied: ' + cmd);
+        }).catch(() => {
+          showToast('Copied: ' + cmd);
+        });
+      });
+    }
+
+    // Copy Email
+    const copyEmailBtn = document.getElementById('copy-email-trigger');
+    const copyEmailIcon = document.getElementById('copy-email-icon');
+    if (copyEmailBtn) {
+      copyEmailBtn.addEventListener('click', () => {
+        const email = 'maya.cohen.dev@example.com';
+        navigator.clipboard?.writeText(email).then(() => {
+          if (copyEmailIcon) copyEmailIcon.textContent = 'done';
+          showToast('Email copied to clipboard!');
+          setTimeout(() => {
+            if (copyEmailIcon) copyEmailIcon.textContent = 'content_copy';
+          }, 2000);
+        }).catch(() => {
+          showToast('Copied: ' + email);
+        });
+      });
+    }
+
+    // Resume Download Simulation
+    const resumeButtons = [
+      document.getElementById('download-cv-btn'),
+      document.getElementById('download-cv-btn-footer')
+    ];
+    resumeButtons.forEach(btn => {
+      if (btn) {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          showToast('Initiating Maya_Cohen_CV.pdf download...');
+        });
+      }
+    });
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-base/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.35)]" data-active-classes="text-primary-container bg-surface-subtle/80 font-medium"><div class="flex justify-around items-center h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-12 rounded-lg transition-all gap-0.5 text-primary-container bg-surface-subtle/80 font-medium" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">code</span><span class="font-label-code-sm text-label-code-sm">Overview</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 rounded-lg text-text-secondary hover:text-on-surface transition-all gap-0.5" data-path="projects" href="#"><span class="material-symbols-outlined text-[20px]">dataset</span><span class="font-label-code-sm text-label-code-sm">Projects</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 rounded-lg text-text-secondary hover:text-on-surface transition-all gap-0.5" data-path="architecture" href="#"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-label-code-sm text-label-code-sm">Arch</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 rounded-lg text-text-secondary hover:text-on-surface transition-all gap-0.5" data-path="stack" href="#"><span class="material-symbols-outlined text-[20px]">layers</span><span class="font-label-code-sm text-label-code-sm">Stack</span></a></div></nav></body></html>
