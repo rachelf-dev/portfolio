@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { Projects } from "@/components/Projects";
 import { TopBar } from "@/components/TopBar";
 import { profile } from "@/data/profile";
 
@@ -15,6 +16,7 @@ export default function HomePage() {
           githubUrl={profile.githubUrl}
           resumePath={profile.resumePath}
         />
+        <Projects />
       </main>
     </>
   );

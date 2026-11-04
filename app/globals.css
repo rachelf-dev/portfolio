@@ -85,9 +85,25 @@
   --text-brand-mono--font-weight: 600;
 }
 
+@keyframes scroll-cue-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@utility animate-scroll-cue-bounce {
+  animation: scroll-cue-bounce 2.5s ease-in-out infinite;
+}
+
 @layer base {
   html {
     color-scheme: dark;
+    scroll-behavior: smooth;
   }
 
   body {

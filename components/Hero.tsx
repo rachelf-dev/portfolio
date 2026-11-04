@@ -17,7 +17,10 @@ const primaryButtonClass =
 
 export function Hero({ name, role, tagline, email, githubUrl, resumePath }: HeroProps) {
   return (
-    <section aria-labelledby="hero-heading" className="relative overflow-hidden border-b border-border">
+    <section
+      aria-labelledby="hero-heading"
+      className="relative flex flex-col overflow-hidden border-b border-border lg:min-h-[80vh]"
+    >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div
           className="absolute inset-0 opacity-[0.16] [mask-image:radial-gradient(ellipse_at_center,black_42%,transparent_78%)]"
@@ -31,7 +34,7 @@ export function Hero({ name, role, tagline, email, githubUrl, resumePath }: Hero
         <div className="absolute top-12 right-0 h-72 w-[28rem] translate-x-1/4 rounded-full bg-violet/15 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto flex max-w-7xl flex-col px-4 pt-14 pb-20 sm:px-6 lg:px-8 lg:pt-20 lg:pb-28">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 pt-14 pb-16 sm:px-6 lg:px-8 lg:pt-20 lg:pb-14">
         <div className="flex max-w-4xl flex-col">
           <h1
             id="hero-heading"
@@ -74,7 +77,34 @@ export function Hero({ name, role, tagline, email, githubUrl, resumePath }: Hero
           </div>
         </div>
       </div>
+
+      <a
+        href="#projects"
+        aria-label="Scroll to projects"
+        className="relative z-10 mx-auto mb-6 flex size-11 shrink-0 items-center justify-center rounded-full text-accent motion-safe:transition-colors motion-safe:duration-200 hover:text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        <ScrollChevronIcon />
+      </a>
     </section>
+  );
+}
+
+function ScrollChevronIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="size-6 motion-safe:animate-scroll-cue-bounce"
+      fill="none"
+    >
+      <path
+        d="M6 9l6 6 6-6"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
