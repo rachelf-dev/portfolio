@@ -5,11 +5,13 @@ import { useEffect, useRef, useState } from "react";
 type EmailButtonProps = {
   email: string;
   className: string;
+  /** Keep the address on screen and show "Copied!" beside it. */
+  showAddress?: boolean;
 };
 
 const copiedMessageDurationMs = 2000;
 
-export function EmailButton({ email, className }: EmailButtonProps) {
+export function EmailButton({ email, className, showAddress = false }: EmailButtonProps) {
   const [copied, setCopied] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
@@ -49,9 +51,32 @@ export function EmailButton({ email, className }: EmailButtonProps) {
 
   return (
     <a href={`mailto:${email}`} className={className} onClick={onClick}>
-      <MailIcon />
-      <span aria-live="polite">{copied ? "Copied!" : "Email"}</span>
-      <span className="sr-only"> {email}</span>
+      {showAddress ? (
+        <span className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-accent/40 bg-accent/10 text-accent">
+          <MailIcon />
+        </span>
+      ) : (
+        <MailIcon />
+      )}
+      {showAddress ? (
+        <span className="min-w-0 break-all">{email}</span>
+      ) : (
+        <span aria-live="polite">{copied ? "Copied!" : "Email"}</span>
+      )}
+      {showAddress ? (
+        <span
+          aria-live="polite"
+          className={
+            copied
+              ? "shrink-0 font-sans text-label-code font-semibold text-accent"
+              : "sr-only"
+          }
+        >
+          {copied ? "Copied!" : ""}
+        </span>
+      ) : (
+        <span className="sr-only"> {email}</span>
+      )}
     </a>
   );
 }

@@ -14,6 +14,7 @@ export type Profile = {
   about: string;
   skills: SkillGroup[];
   education: string;
+  projectsIntro: string;
   projectsNote: string;
 };
 
@@ -79,6 +80,6 @@ export const profile: Profile = {
     },
   ],
   education: "MAHAT, Practical Software Engineering Studies, 2024–2026",
-  projectsNote:
-    "The projects below represent my hands-on development experience, demonstrating my ability to design, develop, and implement end-to-end software solutions using a variety of technologies.",
+  projectsIntro: "A selection of full-stack and AI-powered applications.",
+  projectsNote: "The projects above are my hands-on experience: each one was built end to end.",
 };
