@@ -163,12 +163,13 @@ type Project = {
   slug: string;            // used in the URL
   title: string;
   tagline: string;         // one line for the card
-  coverImage: string;      // path under /public, also the main image
+  coverImage?: string;     // card image, path under /public
+  pageImage?: string;      // project page image; falls back to coverImage
   demoVideo?: string;      // optional short demo
   tags: string[];          // technologies
   role: string;
   duration: string;
-  type: "study" | "personal";
+  type: "study" | "personal" | "hackathon";
   liveUrl?: string;
   githubUrl?: string;
   problem: string;

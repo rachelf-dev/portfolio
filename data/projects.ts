@@ -2,12 +2,13 @@ export type Project = {
   slug: string; // used in the URL
   title: string;
   tagline: string; // one line for the card
-  coverImage: string; // path under /public, also the main image
+  coverImage?: string; // card image, path under /public
+  pageImage?: string; // project page image; falls back to coverImage
   demoVideo?: string; // optional short demo
   tags: string[]; // technologies
   role: string;
   duration: string;
-  type: "study" | "personal";
+  type: "study" | "personal" | "hackathon";
   liveUrl?: string;
   githubUrl?: string;
   problem: string;
@@ -22,11 +23,12 @@ export const projects: Project[] = [
     title: "Phoenix AI RAG Chatbot",
     tagline:
       "An AI-powered Hebrew chatbot that provides accurate answers based exclusively on Phoenix's public website content.",
-    coverImage: "/images/phoenix-rag-chatbot.png",
+    coverImage: "/images/phoenix-rag-chatbot-card.webp",
+    pageImage: "/images/phoenix-rag-chatbot-chat.webp",
     tags: ["Python", "FastAPI", "RAG", "BM25", "Gemini Flash"],
     role: "Solo Developer",
     duration: "1 week",
-    type: "study",
+    type: "hackathon",
     liveUrl: "https://phoenix-rag-production.up.railway.app/",
     githubUrl: "https://github.com/rachelf-dev/phoenix-hebrew-rag-bot",
     problem:
@@ -62,7 +64,6 @@ export const projects: Project[] = [
     title: "Smart Parent-Teacher Meeting Management System",
     tagline:
       "An intelligent scheduling system that automatically organizes parent-teacher meetings while considering family relationships and scheduling constraints.",
-    coverImage: "/images/parent-teacher-meeting-system.png",
     tags: ["C#", ".NET Core", "React", "SQL Server", "JWT"],
     role: "Solo Full-Stack Developer",
     duration: "2 months",
@@ -101,7 +102,8 @@ export const projects: Project[] = [
     title: "Calorie Calculator App",
     tagline:
       "A full-stack calorie tracking application that helps users monitor daily food consumption and progress toward personalized calorie goals.",
-    coverImage: "/images/calorie-calculator.png",
+    coverImage: "/images/calorie-calculator-card.webp",
+    pageImage: "/images/calorie-calculator-chat.webp",
     tags: ["Angular", "Node.js", "MongoDB", "JWT", "NgRx"],
     role: "Full-Stack Developer in a team of 2, responsible for authentication, user management, and profile functionality.",
     duration: "1 month",
@@ -137,3 +139,40 @@ export const projects: Project[] = [
     order: 3,
   },
 ];
+
+export const projectPlaceholderImage = "/images/project-placeholder.webp";
+
+export function getProjectCardImage(project: Pick<Project, "coverImage">): string {
+  return project.coverImage ?? projectPlaceholderImage;
+}
+
+export function getProjectPageImage(
+  project: Pick<Project, "coverImage" | "pageImage">,
+): string {
+  return project.pageImage ?? project.coverImage ?? projectPlaceholderImage;
+}
+
+export function getSortedProjects(): Project[] {
+  return [...projects].sort((a, b) => a.order - b.order);
+}
+
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((project) => project.slug === slug);
+}
+
+export function getAdjacentProjects(slug: string): {
+  previous?: Project;
+  next?: Project;
+} {
+  const sorted = getSortedProjects();
+  const index = sorted.findIndex((project) => project.slug === slug);
+
+  if (index === -1) {
+    return {};
+  }
+
+  return {
+    previous: sorted[index - 1],
+    next: sorted[index + 1],
+  };
+}

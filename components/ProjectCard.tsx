@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { TechTag } from "@/components/TechTag";
+import { getProjectCardImage } from "@/data/projects";
 
 export type ProjectCardData = {
   slug: string;
   title: string;
   tagline: string;
-  coverImage: string;
+  coverImage?: string;
   tags: string[];
 };
 
@@ -25,11 +26,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
     >
       <div className="relative aspect-video w-full overflow-hidden bg-surface">
         <Image
-          src={project.coverImage}
+          src={getProjectCardImage(project)}
           alt={`Screenshot of ${project.title}`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover motion-safe:transition motion-safe:duration-500 motion-safe:group-hover:scale-105"
+          className="object-cover object-top motion-safe:transition motion-safe:duration-500 motion-safe:group-hover:scale-105"
         />
         <div
           aria-hidden="true"

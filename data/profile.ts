@@ -80,6 +80,6 @@ export const profile: Profile = {
     },
   ],
   education: "MAHAT, Practical Software Engineering Studies, 2024–2026",
-  projectsIntro: "A selection of full-stack and AI-powered applications.",
+  projectsIntro: "A selection of full-stack and AI-powered applications I built.",
   projectsNote: "The projects above are my hands-on experience: each one was built end to end.",
 };

@@ -40,7 +40,7 @@ I am a software developer with strong analytical and problem-solving skills, exp
 - tags: Python, FastAPI, RAG, BM25, Gemini Flash
 - my role: Solo Developer
 - duration: 1 week
-- type: study
+- type: hackathon
 - live URL: https://phoenix-rag-production.up.railway.app/
 - GitHub URL: https://github.com/rachelf-dev/phoenix-hebrew-rag-bot
 - order: 1
