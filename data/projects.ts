@@ -45,7 +45,7 @@ export const projects: Project[] = [
     problem:
       "Users need to search through more than 1,000 pages of website content to find relevant information, making information retrieval time-consuming and difficult.",
     solution:
-      "Developed a Hebrew AI chatbot based on RAG architecture that allows users to ask natural-language questions and receive answers based exclusively on Phoenix's public website content. The system crawls, cleans, and chunks website content, builds a BM25 search index, and uses Cohere reranking to retrieve relevant information. Gemini Flash generates contextual answers with source links. When relevant information is unavailable, the chatbot directs users to customer support instead of generating unsupported answers.",
+      "Developed a Hebrew RAG chatbot that answers natural-language questions using only public content from Phoenix's website (fnx.co.il). The pipeline crawls, cleans, and chunks pages, builds a searchable index (BM25 by default, with an optional hybrid vector index), retrieves relevant passages, optionally re-ranks them with Cohere, and generates grounded answers with source links via gemini-3.5-flash-lite. When the site does not contain enough information, or the question is out of scope, the bot refuses to guess and directs users to customer support.",
     techStack: [
       {
         name: "Python 3.10",
@@ -54,22 +54,22 @@ export const projects: Project[] = [
       },
       {
         name: "FastAPI + Uvicorn",
-        reason: "A fast async API with typed request validation, served by Uvicorn.",
+        reason: "A REST API with Pydantic request validation, served by Uvicorn.",
       },
       {
         name: "Google Gemini",
         reason:
-          "Generates every answer, and also creates the embeddings used when the index is built and in hybrid retrieval.",
+          "Powers grounded answers and follow-up question rewriting. Fixed guardrail messages handle blocked or out-of-scope questions. Also creates the embeddings for the offline index build and hybrid retrieval.",
       },
       {
         name: "BM25 (rank-bm25)",
         reason:
-          "Keyword retrieval used by default: cheap, fast and needs no embedding call when a question arrives.",
+          "Keyword retrieval used by default: fast, and needs no embedding call when a question arrives.",
       },
       {
         name: "NumPy vector index",
         reason:
-          "Cosine similarity over stored embeddings, a simple lightweight index without a separate vector database.",
+          "Cosine similarity over stored embeddings, a lightweight index without a separate vector database. Used at query time only in hybrid mode; BM25-only mode loads just the chunk metadata and the BM25 index.",
       },
       {
         name: "Cohere Rerank (optional)",
@@ -77,8 +77,8 @@ export const projects: Project[] = [
           "Re-orders the retrieved passages for better relevance. The pipeline skips this step when no API key is set.",
       },
       {
-        name: "httpx, BeautifulSoup, lxml",
-        reason: "Crawl pages, respect robots rules and clean the HTML into text for indexing.",
+        name: "httpx, BeautifulSoup, lxml, Protego",
+        reason: "Crawl pages, respect robots.txt rules and clean the HTML into text for indexing.",
       },
       {
         name: "SQLite",

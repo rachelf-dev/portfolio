@@ -54,16 +54,16 @@ My projects demonstrate my practical development experience, problem-solving ski
 Users need to search through more than 1,000 pages of website content to find relevant information, making information retrieval time-consuming and difficult.
 
 - The Solution:
-Developed a Hebrew AI chatbot based on RAG architecture that allows users to ask natural-language questions and receive answers based exclusively on Phoenix's public website content. The system crawls, cleans, and chunks website content, builds a BM25 search index, and uses Cohere reranking to retrieve relevant information. Gemini Flash generates contextual answers with source links. When relevant information is unavailable, the chatbot directs users to customer support instead of generating unsupported answers.
+Developed a Hebrew RAG chatbot that answers natural-language questions using only public content from Phoenix's website (fnx.co.il). The pipeline crawls, cleans, and chunks pages, builds a searchable index (BM25 by default, with an optional hybrid vector index), retrieves relevant passages, optionally re-ranks them with Cohere, and generates grounded answers with source links via gemini-3.5-flash-lite. When the site does not contain enough information, or the question is out of scope, the bot refuses to guess and directs users to customer support.
 
 - Tech Stack:
   - Python 3.10: A strong ecosystem for NLP, retrieval and API work, pinned in the Docker image for reproducible runs.
-  - FastAPI + Uvicorn: A fast async API with typed request validation, served by Uvicorn.
-  - Google Gemini: Generates every answer, and also creates the embeddings used when the index is built and in hybrid retrieval.
-  - BM25 (rank-bm25): Keyword retrieval used by default: cheap, fast and needs no embedding call when a question arrives.
-  - NumPy vector index: Cosine similarity over stored embeddings, a simple lightweight index without a separate vector database.
+  - FastAPI + Uvicorn: A REST API with Pydantic request validation, served by Uvicorn.
+  - Google Gemini: Powers grounded answers and follow-up question rewriting. Fixed guardrail messages handle blocked or out-of-scope questions. Also creates the embeddings for the offline index build and hybrid retrieval.
+  - BM25 (rank-bm25): Keyword retrieval used by default: fast, and needs no embedding call when a question arrives.
+  - NumPy vector index: Cosine similarity over stored embeddings, a lightweight index without a separate vector database. Used at query time only in hybrid mode; BM25-only mode loads just the chunk metadata and the BM25 index.
   - Cohere Rerank (optional): Re-orders the retrieved passages for better relevance. The pipeline skips this step when no API key is set.
-  - httpx, BeautifulSoup, lxml: Crawl pages, respect robots rules and clean the HTML into text for indexing.
+  - httpx, BeautifulSoup, lxml, Protego: Crawl pages, respect robots.txt rules and clean the HTML into text for indexing.
   - SQLite: Stores crawled content and the embedding cache without running a separate database server.
   - Docker: One container image for consistent builds and deployment.
   - Render / Railway: Hosting platforms for the Docker image.
