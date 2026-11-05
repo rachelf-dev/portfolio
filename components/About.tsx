@@ -11,8 +11,6 @@ const groupBorderClass = [
 ] as const;
 
 export function About() {
-  const firstName = profile.name.split(" ")[0] ?? profile.name;
-
   return (
     <section aria-labelledby="about-heading" className="border-b border-border bg-bg py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -27,7 +25,7 @@ export function About() {
               id="about-heading"
               className="text-headline-lg-mobile tracking-tight text-text lg:text-headline-lg"
             >
-              About {firstName}
+              {profile.aboutHeading}
             </h2>
 
             {profile.photo ? (
@@ -54,7 +52,7 @@ export function About() {
                   <CheckIcon />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-semibold text-text">Practical experience</p>
+                  <h3 className="font-semibold text-text">{profile.experienceHeading}</h3>
                   <p className="mt-1 text-body-sm leading-relaxed text-muted">{profile.projectsNote}</p>
                 </div>
               </div>
@@ -72,18 +70,18 @@ export function About() {
           </div>
 
           <div className="min-w-0 rounded-2xl border border-border bg-card p-6 lg:p-8">
-            <h3 className="text-headline-sm text-text">Technical Arsenal</h3>
+            <h3 className="text-headline-sm text-text">{profile.skillsHeading}</h3>
             <p className="mt-1 font-mono text-label-code-sm text-muted">Categorized stack</p>
-            <ul className="mt-6 grid grid-cols-1 items-start gap-4 sm:grid-cols-2">
+            <ul className="mt-6 flex flex-col gap-4">
               {profile.skills.map((group, index) => (
                 <li
-                  key={group.label}
-                  className={`rounded-xl border bg-surface p-4 motion-safe:transition motion-safe:duration-200 ${groupBorderClass[index % groupBorderClass.length]}`}
+                  key={group.title}
+                  className={`w-full min-w-0 rounded-xl border bg-surface p-4 motion-safe:transition motion-safe:duration-200 ${groupBorderClass[index % groupBorderClass.length]}`}
                 >
-                  <h4 className="font-mono text-label-code-sm font-semibold tracking-wider text-accent uppercase">
-                    {group.label}
+                  <h4 className="font-mono text-label-code-sm font-semibold tracking-wider break-words text-accent uppercase">
+                    {group.title}
                   </h4>
-                  <ul className="mt-3 flex flex-wrap gap-1.5">
+                  <ul className="mt-3 flex min-w-0 flex-wrap gap-2">
                     {group.items.map((item) => (
                       <li key={item}>
                         <TechTag label={item} />

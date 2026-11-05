@@ -1,5 +1,5 @@
 export type SkillGroup = {
-  label: string;
+  title: string;
   items: string[];
 };
 
@@ -11,7 +11,10 @@ export type Profile = {
   githubUrl: string;
   resumePath: string;
   photo: string | null;
+  aboutHeading: string;
   about: string;
+  experienceHeading: string;
+  skillsHeading: string;
   skills: SkillGroup[];
   education: string;
   projectsIntro: string;
@@ -27,11 +30,14 @@ export const profile: Profile = {
   githubUrl: "https://github.com/rachelf-dev",
   resumePath: "/resume.pdf",
   photo: null,
+  aboutHeading: "About me",
   about:
     "I am a software developer with strong analytical and problem-solving skills, experienced in developing end-to-end software solutions. I enjoy designing and building complex systems, writing clean and modular code, and working with APIs and databases. I have hands-on experience with Full-Stack development, AI technologies, and modern development tools. I am a fast independent learner who enjoys tackling technical challenges and working collaboratively.",
+  experienceHeading: "Hands-on Experience",
+  skillsHeading: "Technical Skills",
   skills: [
     {
-      label: "Languages",
+      title: "Languages",
       items: [
         "Python",
         "Java",
@@ -44,42 +50,34 @@ export const profile: Profile = {
       ],
     },
     {
-      label: "Frameworks",
+      title: "Frameworks & Libraries",
       items: [
         "React",
         "Angular",
         "Vue",
-        ".NET Core",
-        "FastAPI",
         "Node.js",
+        "FastAPI",
+        ".NET Core",
         "WPF",
         "Entity Framework",
         "Bootstrap",
       ],
     },
     {
-      label: "Databases",
+      title: "Databases",
       items: ["SQL Server", "MongoDB"],
     },
     {
-      label: "Tools and Cloud",
-      items: [
-        "GitHub",
-        "Linux",
-        "Windows",
-        "Arduino",
-        "Railway",
-        "Netlify",
-        "Render",
-        "Copilot",
-        "Cursor",
-        "ChatGPT",
-        "Claude",
-        "Gemini",
-      ],
+      title: "Development Tools & Platforms",
+      items: ["GitHub", "Linux", "Windows", "Railway", "Netlify", "Render", "Arduino"],
+    },
+    {
+      title: "AI Development Tools",
+      items: ["Copilot", "Cursor", "ChatGPT", "Claude", "Gemini"],
     },
   ],
   education: "MAHAT, Practical Software Engineering Studies, 2024–2026",
   projectsIntro: "A selection of full-stack and AI-powered applications I built.",
-  projectsNote: "The projects above are my hands-on experience: each one was built end to end.",
+  projectsNote:
+    "My projects demonstrate my practical development experience, problem-solving skills, and ability to build real-world software solutions using modern technologies.",
 };

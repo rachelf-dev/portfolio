@@ -25,7 +25,18 @@ export const projects: Project[] = [
       "An AI-powered Hebrew chatbot that provides accurate answers based exclusively on Phoenix's public website content.",
     coverImage: "/images/phoenix-rag-chatbot-card.webp",
     pageImage: "/images/phoenix-rag-chatbot-chat.webp",
-    tags: ["Python", "FastAPI", "RAG", "BM25", "Gemini Flash"],
+    tags: [
+      "Python",
+      "FastAPI",
+      "RAG",
+      "Gemini API",
+      "BM25",
+      "NumPy",
+      "Cohere Rerank",
+      "Docker",
+      "Render",
+      "Railway",
+    ],
     role: "Solo Developer",
     duration: "1 week",
     type: "hackathon",
@@ -37,24 +48,49 @@ export const projects: Project[] = [
       "Developed a Hebrew AI chatbot based on RAG architecture that allows users to ask natural-language questions and receive answers based exclusively on Phoenix's public website content. The system crawls, cleans, and chunks website content, builds a BM25 search index, and uses Cohere reranking to retrieve relevant information. Gemini Flash generates contextual answers with source links. When relevant information is unavailable, the chatbot directs users to customer support instead of generating unsupported answers.",
     techStack: [
       {
-        name: "Python",
-        reason: "Backend development and data processing.",
+        name: "Python 3.10",
+        reason:
+          "A strong ecosystem for NLP, retrieval and API work, pinned in the Docker image for reproducible runs.",
       },
       {
-        name: "FastAPI",
-        reason: "Building the backend API.",
+        name: "FastAPI + Uvicorn",
+        reason: "A fast async API with typed request validation, served by Uvicorn.",
       },
       {
-        name: "BM25",
-        reason: "Efficient information retrieval.",
+        name: "Google Gemini",
+        reason:
+          "Generates every answer, and also creates the embeddings used when the index is built and in hybrid retrieval.",
       },
       {
-        name: "Cohere",
-        reason: "Improving search relevance through reranking.",
+        name: "BM25 (rank-bm25)",
+        reason:
+          "Keyword retrieval used by default: cheap, fast and needs no embedding call when a question arrives.",
       },
       {
-        name: "Gemini Flash",
-        reason: "Generating contextual answers based on retrieved information.",
+        name: "NumPy vector index",
+        reason:
+          "Cosine similarity over stored embeddings, a simple lightweight index without a separate vector database.",
+      },
+      {
+        name: "Cohere Rerank (optional)",
+        reason:
+          "Re-orders the retrieved passages for better relevance. The pipeline skips this step when no API key is set.",
+      },
+      {
+        name: "httpx, BeautifulSoup, lxml",
+        reason: "Crawl pages, respect robots rules and clean the HTML into text for indexing.",
+      },
+      {
+        name: "SQLite",
+        reason: "Stores crawled content and the embedding cache without running a separate database server.",
+      },
+      {
+        name: "Docker",
+        reason: "One container image for consistent builds and deployment.",
+      },
+      {
+        name: "Render / Railway",
+        reason: "Hosting platforms for the Docker image.",
       },
     ],
     order: 1,
@@ -101,39 +137,52 @@ export const projects: Project[] = [
     slug: "calorie-calculator",
     title: "Calorie Calculator App",
     tagline:
-      "A full-stack calorie tracking application that helps users monitor daily food consumption and progress toward personalized calorie goals.",
+      "Full-stack calorie tracker with an AI assistant that acts on your behalf.",
     coverImage: "/images/calorie-calculator-card.webp",
     pageImage: "/images/calorie-calculator-chat.webp",
-    tags: ["Angular", "Node.js", "MongoDB", "JWT", "NgRx"],
-    role: "Full-Stack Developer in a team of 2, responsible for authentication, user management, and profile functionality.",
+    tags: ["Angular", "NgRx", "Node.js", "Express", "MongoDB", "Gemini API"],
+    role: "Full-stack developer in a team of 2. Built authentication, user management and infrastructure, and built the AI chat assistant (Gemini function calling) end to end.",
     duration: "1 month",
     type: "study",
     liveUrl: "https://calorie-counter-app1.netlify.app/",
     githubUrl: "https://github.com/rachelf-dev/calorie-counter-app",
     problem:
-      "Users need a convenient way to track daily calorie consumption, manage food items, and monitor their progress toward personalized calorie goals.",
+      "Tracking daily calories usually means searching a long food list, entering quantities and checking totals by hand, which is slow and easy to abandon.",
     solution:
-      "Developed a full-stack calorie tracking application featuring food search, daily meal tracking, personalized calorie goals, weekly history charts, and user-specific food products. The application also includes role-based access for regular users and administrators, profile management, an AI chatbot, and automated weekly email summaries.\n\nMy contribution included:\n- Backend: Designed the user model and implemented registration, login, JWT authentication, profile management with image upload, and administrator permissions.\n- Frontend: Developed login, registration, and profile pages using Angular.\n- State Management: Implemented authentication state management with NgRx, HTTP interceptors, and route guards.\n- User Experience: Implemented role-based navigation menus.\n- Additional Contributions: Added the AI chatbot and assisted with deployment to Netlify and Render.",
+      "A full-stack web app with a Hebrew, right-to-left interface. Users register, search a database of about 550 foods, build a daily basket, set a calorie goal and follow their history on a chart. They can also add private products, and admins manage global products and users. A weekly email summarizes the last seven days with a chart. The highlight is an AI assistant built with Gemini function calling: users type a request in Hebrew, and the assistant searches products, adds or removes items, creates products or summarizes the day, running inside the logged-in user's context. After each action the UI state refreshes automatically.",
     techStack: [
       {
-        name: "Angular",
-        reason: "Building the frontend and user interface.",
-      },
-      {
-        name: "Node.js",
-        reason: "Backend development and API implementation.",
-      },
-      {
-        name: "MongoDB",
-        reason: "Storing user information and application data.",
-      },
-      {
-        name: "JWT",
-        reason: "Secure authentication.",
+        name: "Angular 21",
+        reason: "Standalone components and lazy-loaded routes keep the app modular and fast.",
       },
       {
         name: "NgRx",
-        reason: "Managing application and authentication state.",
+        reason: "A predictable store for auth and daily logs, so the basket and progress bar stay in sync.",
+      },
+      {
+        name: "Angular Material (RTL)",
+        reason: "Accessible components with proper right-to-left support.",
+      },
+      {
+        name: "Node.js + Express",
+        reason: "A simple REST API with JWT auth and role-based middleware.",
+      },
+      {
+        name: "MongoDB + Mongoose",
+        reason:
+          "Flexible documents for products and daily logs, with unique indexes and model-level logic.",
+      },
+      {
+        name: "Gemini API",
+        reason: "Function calling lets the assistant call real backend actions instead of just chatting.",
+      },
+      {
+        name: "Jest + Supertest",
+        reason: "Automated API and integration tests.",
+      },
+      {
+        name: "Netlify + Render",
+        reason: "Simple, free deployment for the frontend and the API.",
       },
     ],
     order: 3,
