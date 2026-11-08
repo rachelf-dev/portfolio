@@ -46,6 +46,8 @@ My projects demonstrate my practical development experience, problem-solving ski
 - my role: Solo Developer
 - duration: 1 week
 - type: hackathon
+- highlight label: Hackathon Finalist
+- highlight detail: Selected as a finalist at Hackathon AI, organized by Open Source - Placement, 2026
 - live URL: https://phoenix-rag-production.up.railway.app/
 - GitHub URL: https://github.com/rachelf-dev/phoenix-hebrew-rag-bot
 - order: 1
@@ -75,7 +77,7 @@ Developed a Hebrew RAG chatbot that answers natural-language questions using onl
 - tagline: An intelligent scheduling system that automatically organizes parent-teacher meetings while considering family relationships and scheduling constraints.
 - cover image file: [To be added]
 - demo video/GIF: none
-- tags: C#, .NET Core, React, SQL Server, JWT
+- tags: C#, ASP.NET Core, React, TypeScript, SQL Server, Entity Framework Core, JWT, BCrypt
 - my role: Solo Full-Stack Developer
 - duration: 2 months
 - type: study
@@ -90,11 +92,13 @@ Traditional parent-teacher meeting scheduling requires parents to wait between a
 Developed a full-stack platform with an intelligent scheduling algorithm that automatically arranges meetings. The algorithm considers siblings so that parents can attend their children's meetings consecutively, while also accommodating urgent scheduling constraints entered by the school secretary. The system also generates printable meeting schedules organized by class.
 
 - Tech Stack:
-  - C#: Implementing application logic and scheduling algorithms.
-  - .NET Core: Backend development and REST API implementation.
-  - React: Building the interactive user interface.
-  - SQL Server: Relational database design and data management.
-  - JWT and BCrypt: Secure authentication, authorization, and password protection.
+  - C# + ASP.NET Core 8: A structured REST API with controllers. The scheduling algorithm runs on the server, next to the data, and not in the browser.
+  - Entity Framework Core 8 + SQL Server: Related data (schools, students, teachers, parents, availability and meetings) fits a relational model, with migrations to manage schema changes.
+  - React 19 + TypeScript (Vite): A feature-based single-page app for the secretary's workflow: set up the day, collect parent availability, run the scheduling, export. Vite gives fast builds, and TypeScript is used across the client code.
+  - React Router + React Hook Form + Axios: Routing with protected pages, client-side form handling, and direct Axios calls to the REST API.
+  - JWT: Stateless authentication for a single-page app that calls a separate API, with role-based authorization (School and Admin).
+  - BCrypt: Hashes passwords at registration and verifies them at login, so plain-text passwords are never stored.
+  - EPPlus, jsPDF, ExcelJS: Excel import on the server, and PDF and Excel export in the browser.
 
 ### Project 3
 

@@ -170,6 +170,7 @@ type Project = {
   role: string;
   duration: string;
   type: "study" | "personal" | "hackathon";
+  highlight?: { label: string; detail?: string }; // { label: "Hackathon Finalist", detail: "Selected as a finalist at Hackathon AI, organized by Open Source - Placement, 2026" }
   liveUrl?: string;
   githubUrl?: string;
   problem: string;

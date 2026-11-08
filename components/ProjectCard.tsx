@@ -1,14 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { HighlightBadge } from "@/components/HighlightBadge";
 import { TechTag } from "@/components/TechTag";
-import { getProjectCardImage } from "@/data/projects";
+import { getProjectCardImage, type Project } from "@/data/projects";
 
 export type ProjectCardData = {
   slug: string;
   title: string;
   tagline: string;
   coverImage?: string;
+  coverFit?: "cover" | "contain";
+  highlight?: Project["highlight"];
   tags: string[];
 };
 
@@ -18,11 +21,17 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const href = `/projects/${project.slug}`;
+  const coverFit = project.coverFit ?? "cover";
+  const highlighted = Boolean(project.highlight);
 
   return (
     <Link
       href={href}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card motion-safe:transition motion-safe:duration-300 hover:border-accent/50 hover:shadow-[0_0_30px_var(--color-glow-cyan)] motion-safe:hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      className={
+        highlighted
+          ? "group flex h-full flex-col overflow-hidden rounded-2xl border border-violet bg-card motion-safe:transition motion-safe:duration-300 hover:shadow-[0_0_30px_var(--color-glow-violet)] motion-safe:hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          : "group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card motion-safe:transition motion-safe:duration-300 hover:border-accent/50 hover:shadow-[0_0_30px_var(--color-glow-cyan)] motion-safe:hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      }
     >
       <div className="relative aspect-video w-full overflow-hidden bg-surface">
         <Image
@@ -30,12 +39,21 @@ export function ProjectCard({ project }: ProjectCardProps) {
           alt={`Screenshot of ${project.title}`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover object-top motion-safe:transition motion-safe:duration-500 motion-safe:group-hover:scale-105"
+          className={
+            coverFit === "contain"
+              ? "object-contain object-center"
+              : "object-cover object-top motion-safe:transition motion-safe:duration-500 motion-safe:group-hover:scale-105"
+          }
         />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-80"
         />
+        {project.highlight ? (
+          <span className="absolute top-2 left-2 z-10 max-w-[calc(100%-1rem)]">
+            <HighlightBadge label={project.highlight.label} />
+          </span>
+        ) : null}
       </div>
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">

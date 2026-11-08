@@ -1,9 +1,12 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Footer } from "@/components/Footer";
+import { HighlightBanner } from "@/components/HighlightBadge";
 import { TechTag } from "@/components/TechTag";
 import { TopBar } from "@/components/TopBar";
 import { profile } from "@/data/profile";
@@ -95,6 +98,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {project.tagline}
             </p>
           </header>
+
+          {project.highlight ? (
+            <HighlightBanner label={project.highlight.label} detail={project.highlight.detail} />
+          ) : null}
 
           <div className="flex flex-col gap-4">
             <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -211,6 +218,7 @@ function MetaItem({
 
 function ProjectMedia({ project }: { project: Project }) {
   const imageSrc = getProjectPageImage(project);
+  const { width, height } = getPublicImageSize(imageSrc);
 
   return (
     <figure className="overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_12px_40px_rgb(0_0_0/0.35)]">
@@ -235,19 +243,48 @@ function ProjectMedia({ project }: { project: Project }) {
           className="aspect-video w-full bg-surface"
         />
       ) : (
-        <div className="relative aspect-video">
-          <Image
-            src={imageSrc}
-            alt={`Screenshot of ${project.title}`}
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 960px"
-            className="object-cover object-top"
-          />
-        </div>
+        <Image
+          src={imageSrc}
+          alt={`Screenshot of ${project.title}`}
+          width={width}
+          height={height}
+          priority
+          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 960px"
+          className="block h-auto w-full"
+          style={{ width: "100%", height: "auto" }}
+        />
       )}
     </figure>
   );
+}
+
+function getPublicImageSize(src: string): { width: number; height: number } {
+  const relative = src.startsWith("/") ? src.slice(1) : src;
+  const filePath = path.join(process.cwd(), "public", ...relative.split("/"));
+  const data = fs.readFileSync(filePath);
+
+  if (data[0] === 0x89 && data.toString("ascii", 1, 4) === "PNG") {
+    return { width: data.readUInt32BE(16), height: data.readUInt32BE(20) };
+  }
+
+  if (data.toString("ascii", 0, 4) === "RIFF" && data.toString("ascii", 8, 12) === "WEBP") {
+    const format = data.toString("ascii", 12, 16);
+    if (format === "VP8X") {
+      return { width: 1 + data.readUIntLE(24, 3), height: 1 + data.readUIntLE(27, 3) };
+    }
+    if (format === "VP8 ") {
+      return {
+        width: data.readUInt16LE(26) & 0x3fff,
+        height: data.readUInt16LE(28) & 0x3fff,
+      };
+    }
+    if (format === "VP8L") {
+      const bits = data.readUInt32LE(21);
+      return { width: 1 + (bits & 0x3fff), height: 1 + ((bits >> 14) & 0x3fff) };
+    }
+  }
+
+  throw new Error(`Could not read the size of ${src}`);
 }
 
 function ChevronRightIcon() {

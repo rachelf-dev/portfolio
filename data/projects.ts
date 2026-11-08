@@ -4,11 +4,13 @@ export type Project = {
   tagline: string; // one line for the card
   coverImage?: string; // card image, path under /public
   pageImage?: string; // project page image; falls back to coverImage
+  coverFit?: "cover" | "contain"; // card image inside the 16:9 frame; default "cover"
   demoVideo?: string; // optional short demo
   tags: string[]; // technologies
   role: string;
   duration: string;
   type: "study" | "personal" | "hackathon";
+  highlight?: { label: string; detail?: string }; // optional accolade on the card and project page
   liveUrl?: string;
   githubUrl?: string;
   problem: string;
@@ -40,6 +42,11 @@ export const projects: Project[] = [
     role: "Solo Developer",
     duration: "1 week",
     type: "hackathon",
+    highlight: {
+      label: "Hackathon Finalist",
+      detail:
+        "Selected as a finalist at Hackathon AI, organized by Open Source - Placement, 2026",
+    },
     liveUrl: "https://phoenix-rag-production.up.railway.app/",
     githubUrl: "https://github.com/rachelf-dev/phoenix-hebrew-rag-bot",
     problem:
@@ -100,7 +107,19 @@ export const projects: Project[] = [
     title: "Smart Parent-Teacher Meeting Management System",
     tagline:
       "An intelligent scheduling system that automatically organizes parent-teacher meetings while considering family relationships and scheduling constraints.",
-    tags: ["C#", ".NET Core", "React", "SQL Server", "JWT"],
+    coverImage: "/images/parent-teacher-meeting-system-card.png",
+    pageImage: "/images/parent-teacher-meeting-system-page.png",
+    coverFit: "contain",
+    tags: [
+      "C#",
+      "ASP.NET Core",
+      "React",
+      "TypeScript",
+      "SQL Server",
+      "Entity Framework Core",
+      "JWT",
+      "BCrypt",
+    ],
     role: "Solo Full-Stack Developer",
     duration: "2 months",
     type: "study",
@@ -111,24 +130,38 @@ export const projects: Project[] = [
       "Developed a full-stack platform with an intelligent scheduling algorithm that automatically arranges meetings. The algorithm considers siblings so that parents can attend their children's meetings consecutively, while also accommodating urgent scheduling constraints entered by the school secretary. The system also generates printable meeting schedules organized by class.",
     techStack: [
       {
-        name: "C#",
-        reason: "Implementing application logic and scheduling algorithms.",
+        name: "C# + ASP.NET Core 8",
+        reason:
+          "A structured REST API with controllers. The scheduling algorithm runs on the server, next to the data, and not in the browser.",
       },
       {
-        name: ".NET Core",
-        reason: "Backend development and REST API implementation.",
+        name: "Entity Framework Core 8 + SQL Server",
+        reason:
+          "Related data (schools, students, teachers, parents, availability and meetings) fits a relational model, with migrations to manage schema changes.",
       },
       {
-        name: "React",
-        reason: "Building the interactive user interface.",
+        name: "React 19 + TypeScript (Vite)",
+        reason:
+          "A feature-based single-page app for the secretary's workflow: set up the day, collect parent availability, run the scheduling, export. Vite gives fast builds, and TypeScript is used across the client code.",
       },
       {
-        name: "SQL Server",
-        reason: "Relational database design and data management.",
+        name: "React Router + React Hook Form + Axios",
+        reason:
+          "Routing with protected pages, client-side form handling, and direct Axios calls to the REST API.",
       },
       {
-        name: "JWT and BCrypt",
-        reason: "Secure authentication, authorization, and password protection.",
+        name: "JWT",
+        reason:
+          "Stateless authentication for a single-page app that calls a separate API, with role-based authorization (School and Admin).",
+      },
+      {
+        name: "BCrypt",
+        reason:
+          "Hashes passwords at registration and verifies them at login, so plain-text passwords are never stored.",
+      },
+      {
+        name: "EPPlus, jsPDF, ExcelJS",
+        reason: "Excel import on the server, and PDF and Excel export in the browser.",
       },
     ],
     order: 2,
