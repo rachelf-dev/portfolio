@@ -1,4 +1,5 @@
 import { EmailButton } from "@/components/EmailButton";
+import { profile } from "@/data/profile";
 
 type HeroProps = {
   name: string;
@@ -69,7 +70,7 @@ export function Hero({ name, role, tagline, email, githubUrl, resumePath }: Hero
               <ExternalIcon />
             </a>
             <EmailButton email={email} className={primaryButtonClass} />
-            <a href={resumePath} download className={secondaryButtonClass}>
+            <a href={resumePath} download={profile.resumeDownloadName} className={secondaryButtonClass}>
               <DownloadIcon />
               Download Resume
               <span className="sr-only"> (PDF)</span>

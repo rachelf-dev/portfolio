@@ -62,7 +62,7 @@ export function Contact() {
               <li>
                 <a
                   href={profile.resumePath}
-                  download
+                  download={profile.resumeDownloadName}
                   className="group flex h-full flex-col items-center rounded-xl border border-border bg-surface p-4 text-center motion-safe:transition motion-safe:duration-200 hover:border-accent/50"
                 >
                   <span className="mb-2 flex size-9 items-center justify-center rounded-lg border border-border-strong bg-card text-muted motion-safe:transition motion-safe:duration-200 group-hover:border-accent/40 group-hover:text-accent">

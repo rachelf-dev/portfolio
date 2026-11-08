@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ContactButton } from "@/components/ContactButton";
+import { profile } from "@/data/profile";
 
 type TopBarProps = {
   name: string;
@@ -26,7 +27,7 @@ export function TopBar({ name, resumePath, backHref }: TopBarProps) {
           </Link>
         ) : (
           <div className="flex shrink-0 items-center gap-2">
-            <a href={resumePath} download className={secondaryButtonClass}>
+            <a href={resumePath} download={profile.resumeDownloadName} className={secondaryButtonClass}>
               Resume
               <span className="sr-only"> (PDF)</span>
             </a>

@@ -10,6 +10,7 @@ export type Profile = {
   email: string;
   githubUrl: string;
   resumePath: string;
+  resumeDownloadName: string;
   photo: string | null;
   aboutHeading: string;
   about: string;
@@ -28,7 +29,8 @@ export const profile: Profile = {
     "Full-Stack Software Developer passionate about building intelligent, scalable applications with modern technologies, clean architecture, and AI-driven solutions.",
   email: "rachelf.dev@gmail.com",
   githubUrl: "https://github.com/rachelf-dev",
-  resumePath: "/resume.pdf",
+  resumePath: "/Rachel%20Feuchtwanger%20%20CV.pdf",
+  resumeDownloadName: "Rachel_Feuchtwanger_CV.pdf",
   photo: null,
   aboutHeading: "About me",
   about:

@@ -7,7 +7,7 @@
 - One-line tagline: Full-Stack Software Developer passionate about building intelligent, scalable applications with modern technologies, clean architecture, and AI-driven solutions.
 - Email: rachelf.dev@gmail.com
 - GitHub URL: https://github.com/rachelf-dev
-- Resume file: /resume.pdf
+- Resume file: /Rachel Feuchtwanger  CV.pdf
 - Photo: none
 
 ## About
