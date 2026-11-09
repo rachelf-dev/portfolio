@@ -3,8 +3,8 @@
 ## Profile
 
 - Full name: Rachel Feuchtwanger
-- Role: Full-Stack Software Developer
-- One-line tagline: Full-Stack Software Developer passionate about building intelligent, scalable applications with modern technologies, clean architecture, and AI-driven solutions.
+- Role: Software Developer
+- One-line tagline: Software Developer passionate about building intelligent, scalable applications with modern technologies, clean architecture, and AI-driven solutions.
 - Email: rachelf.dev@gmail.com
 - GitHub URL: https://github.com/rachelf-dev
 - Resume file: /Rachel Feuchtwanger  CV.pdf

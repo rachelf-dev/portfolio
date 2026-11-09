@@ -9,6 +9,7 @@ export type Profile = {
   tagline: string;
   email: string;
   githubUrl: string;
+  siteUrl: string;
   resumePath: string;
   resumeDownloadName: string;
   photo: string | null;
@@ -24,11 +25,12 @@ export type Profile = {
 
 export const profile: Profile = {
   name: "Rachel Feuchtwanger",
-  role: "Full-Stack Software Developer",
+  role: "Software Developer",
   tagline:
-    "Full-Stack Software Developer passionate about building intelligent, scalable applications with modern technologies, clean architecture, and AI-driven solutions.",
+    "Software Developer passionate about building intelligent, scalable applications with modern technologies, clean architecture, and AI-driven solutions.",
   email: "rachelf.dev@gmail.com",
   githubUrl: "https://github.com/rachelf-dev",
+  siteUrl: "https://rachelf-portfolio.vercel.app",
   resumePath: "/Rachel%20Feuchtwanger%20%20CV.pdf",
   resumeDownloadName: "Rachel_Feuchtwanger_CV.pdf",
   photo: null,
@@ -83,3 +85,7 @@ export const profile: Profile = {
   projectsNote:
     "My projects demonstrate my practical development experience, problem-solving skills, and ability to build real-world software solutions using modern technologies.",
 };
+
+export function getSiteUrl(): URL {
+  return new URL(profile.siteUrl);
+}

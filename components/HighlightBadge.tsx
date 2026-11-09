@@ -9,7 +9,7 @@ type HighlightBannerProps = {
 
 export function HighlightBadge({ label }: HighlightBadgeProps) {
   return (
-    <span className="inline-flex max-w-full items-center gap-1.5 rounded-md bg-violet px-2.5 py-1.5 font-mono text-sm font-semibold text-white shadow-[0_2px_10px_rgb(0_0_0/0.45)]">
+    <span className="inline-flex max-w-full items-center gap-1.5 rounded-md bg-violet-strong px-2.5 py-1.5 font-mono text-sm font-semibold text-white shadow-[0_2px_10px_rgb(0_0_0/0.45)]">
       <TrophyIcon className="size-4" />
       {label}
     </span>

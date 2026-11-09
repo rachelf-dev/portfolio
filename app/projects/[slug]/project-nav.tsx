@@ -20,7 +20,7 @@ export function ProjectNav({ previous, next }: ProjectNavProps) {
       {previous ? (
         <Link
           href={`/projects/${previous.slug}`}
-          className="inline-flex h-11 min-w-0 max-w-[48%] items-center gap-1.5 rounded-lg border border-border bg-card px-2.5 font-mono text-label-code-sm text-muted motion-safe:transition motion-safe:duration-200 hover:border-accent hover:text-accent sm:px-3.5"
+          className="inline-flex h-11 min-w-0 max-w-[48%] items-center gap-1.5 rounded-lg border border-border-strong bg-card px-2.5 font-mono text-label-code-sm text-muted motion-safe:transition motion-safe:duration-200 hover:border-accent hover:text-accent sm:px-3.5"
         >
           <ChevronIcon direction="left" />
           <span className="flex min-w-0 flex-col items-start leading-tight">
@@ -32,7 +32,7 @@ export function ProjectNav({ previous, next }: ProjectNavProps) {
       {next ? (
         <Link
           href={`/projects/${next.slug}`}
-          className="ms-auto inline-flex h-11 min-w-0 max-w-[48%] items-center gap-1.5 rounded-lg border border-border bg-card px-2.5 font-mono text-label-code-sm text-muted motion-safe:transition motion-safe:duration-200 hover:border-accent hover:text-accent sm:px-3.5"
+          className="ms-auto inline-flex h-11 min-w-0 max-w-[48%] items-center gap-1.5 rounded-lg border border-border-strong bg-card px-2.5 font-mono text-label-code-sm text-muted motion-safe:transition motion-safe:duration-200 hover:border-accent hover:text-accent sm:px-3.5"
         >
           <span className="flex min-w-0 flex-col items-end text-end leading-tight">
             <span>Next</span>

@@ -13,7 +13,7 @@ export default function HomePage() {
         <span className="sr-only">Top of page</span>
       </div>
       <TopBar name={profile.name} resumePath={profile.resumePath} />
-      <main>
+      <main id="main" tabIndex={-1} className="outline-none">
         <Hero
           name={profile.name}
           role={profile.role}

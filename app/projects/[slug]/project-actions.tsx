@@ -7,7 +7,7 @@ const primaryButtonClass =
   "inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-4 font-mono text-label-code font-semibold text-accent-foreground shadow-[0_0_24px_color-mix(in_srgb,var(--color-accent)_35%,transparent)] motion-safe:transition motion-safe:duration-200 hover:shadow-[0_0_28px_color-mix(in_srgb,var(--color-accent)_50%,transparent)] motion-safe:hover:-translate-y-px sm:w-auto";
 
 const secondaryButtonClass =
-  "group inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-border-strong bg-card px-4 font-mono text-label-code text-text motion-safe:transition motion-safe:duration-200 hover:border-accent hover:text-accent sm:w-auto";
+  "group inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-border-strong bg-transparent px-4 font-mono text-label-code text-text motion-safe:transition motion-safe:duration-200 hover:border-accent hover:text-accent sm:w-auto";
 
 export function ProjectActions({ liveUrl, githubUrl }: ProjectActionsProps) {
   if (!liveUrl && !githubUrl) {

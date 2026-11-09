@@ -8,6 +8,7 @@ export function ContactButton({ className }: ContactButtonProps) {
   function scrollToContact() {
     const section = document.getElementById("contact");
     if (!section) {
+      window.location.assign("/#contact");
       return;
     }
 
@@ -16,6 +17,11 @@ export function ContactButton({ className }: ContactButtonProps) {
       behavior: reduceMotion ? "auto" : "smooth",
       block: "start",
     });
+    const focusOptions: FocusOptions & { focusVisible?: boolean } = {
+      preventScroll: true,
+      focusVisible: true,
+    };
+    section.focus(focusOptions);
   }
 
   return (

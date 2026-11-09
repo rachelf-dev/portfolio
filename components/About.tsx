@@ -53,12 +53,14 @@ export function About() {
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-semibold text-text">{profile.experienceHeading}</h3>
-                  <p className="mt-1 text-body-sm leading-relaxed text-muted">{profile.projectsNote}</p>
+                  <p className="mt-1 text-pretty text-body-md leading-relaxed text-muted">
+                    {profile.projectsNote}
+                  </p>
                 </div>
               </div>
             </div>
 
-            <p className="mt-4 flex items-start gap-3 rounded-xl border border-border bg-surface px-4 py-3 text-body-sm text-text">
+            <p className="mt-4 flex items-start gap-3 rounded-xl border border-border bg-surface px-4 py-3 text-body-md text-text">
               <span className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-border-strong bg-card text-faint">
                 <SchoolIcon />
               </span>

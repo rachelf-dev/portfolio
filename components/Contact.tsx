@@ -5,11 +5,7 @@ export function Contact() {
   const githubLabel = formatGithubLabel(profile.githubUrl);
 
   return (
-    <section
-      id="contact"
-      aria-labelledby="contact-heading"
-      className="scroll-mt-20 bg-[#060911] py-20 lg:py-28"
-    >
+    <section aria-labelledby="contact" className="bg-bg-deep py-20 lg:py-28">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-accent/25 bg-card px-5 py-8 shadow-[0_0_50px_color-mix(in_srgb,var(--color-accent)_8%,transparent)] sm:px-8 sm:py-10">
           <div
@@ -28,8 +24,9 @@ export function Contact() {
               <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />
             </p>
             <h2
-              id="contact-heading"
-              className="text-headline-lg-mobile tracking-tight text-text lg:text-headline-lg"
+              id="contact"
+              tabIndex={-1}
+              className="scroll-mt-28 text-headline-lg-mobile tracking-tight text-text lg:text-headline-lg"
             >
               Let&apos;s work together
             </h2>
@@ -37,7 +34,7 @@ export function Contact() {
             <EmailButton
               email={profile.email}
               showAddress
-              className="mt-8 flex w-full max-w-lg items-center gap-3 rounded-2xl border border-border bg-surface px-3 py-3 text-left font-mono text-sm font-semibold text-text motion-safe:transition motion-safe:duration-200 hover:border-accent sm:text-brand-mono"
+              className="mt-8 flex min-h-11 w-full max-w-lg items-center gap-3 rounded-2xl border border-border-strong bg-surface px-3 py-3 text-left font-mono text-brand-mono text-text motion-safe:transition motion-safe:duration-200 hover:border-accent"
             />
 
             <ul className="mt-6 grid w-full max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
@@ -46,7 +43,7 @@ export function Contact() {
                   href={profile.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex h-full flex-col items-center rounded-xl border border-border bg-surface p-4 text-center motion-safe:transition motion-safe:duration-200 hover:border-accent/50"
+                  className="group flex h-full flex-col items-center rounded-xl border border-border-strong bg-surface p-4 text-center motion-safe:transition motion-safe:duration-200 hover:border-accent/50"
                 >
                   <span className="mb-2 flex size-9 items-center justify-center rounded-lg border border-border-strong bg-card text-muted motion-safe:transition motion-safe:duration-200 group-hover:border-accent/40 group-hover:text-accent">
                     <GithubIcon />
@@ -55,7 +52,7 @@ export function Contact() {
                     GitHub
                     <ExternalIcon />
                   </span>
-                  <span className="mt-1 font-mono text-label-code-sm break-all text-muted">{githubLabel}</span>
+                  <span className="mt-1 font-mono text-body-md break-all text-muted">{githubLabel}</span>
                   <span className="sr-only"> (opens in a new tab)</span>
                 </a>
               </li>
@@ -63,7 +60,7 @@ export function Contact() {
                 <a
                   href={profile.resumePath}
                   download={profile.resumeDownloadName}
-                  className="group flex h-full flex-col items-center rounded-xl border border-border bg-surface p-4 text-center motion-safe:transition motion-safe:duration-200 hover:border-accent/50"
+                  className="group flex h-full flex-col items-center rounded-xl border border-border-strong bg-surface p-4 text-center motion-safe:transition motion-safe:duration-200 hover:border-accent/50"
                 >
                   <span className="mb-2 flex size-9 items-center justify-center rounded-lg border border-border-strong bg-card text-muted motion-safe:transition motion-safe:duration-200 group-hover:border-accent/40 group-hover:text-accent">
                     <DownloadIcon />
@@ -71,7 +68,7 @@ export function Contact() {
                   <span className="font-mono text-label-code font-semibold text-text group-hover:text-accent">
                     Download Resume
                   </span>
-                  <span className="mt-1 font-mono text-label-code-sm text-muted">PDF</span>
+                  <span className="mt-1 font-mono text-body-md text-muted">PDF</span>
                 </a>
               </li>
             </ul>

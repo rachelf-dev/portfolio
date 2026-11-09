@@ -7,9 +7,8 @@ export function Projects() {
 
   return (
     <section
-      id="projects"
-      aria-labelledby="projects-heading"
-      className="border-b border-border bg-[#060911] py-20 lg:py-28"
+      aria-labelledby="projects"
+      className="border-b border-border bg-bg-deep py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
@@ -19,12 +18,13 @@ export function Projects() {
             <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />
           </p>
           <h2
-            id="projects-heading"
-            className="text-headline-lg-mobile tracking-tight text-text lg:text-headline-lg"
+            id="projects"
+            tabIndex={-1}
+            className="scroll-mt-28 text-headline-lg-mobile tracking-tight text-text lg:text-headline-lg"
           >
             Featured Projects
           </h2>
-          <p className="mt-3 max-w-xl text-start font-mono text-label-code-sm text-faint">
+          <p className="mt-3 max-w-2xl text-pretty text-body-md leading-relaxed text-muted">
             {profile.projectsIntro}
           </p>
         </div>

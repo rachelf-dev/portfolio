@@ -11,7 +11,7 @@ type HeroProps = {
 };
 
 const secondaryButtonClass =
-  "group inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border-strong bg-card px-3.5 font-mono text-label-code text-text motion-safe:transition motion-safe:duration-200 hover:border-accent hover:shadow-[0_0_20px_color-mix(in_srgb,var(--color-accent)_18%,transparent)]";
+  "group inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border-strong bg-transparent px-3.5 font-mono text-label-code text-text motion-safe:transition motion-safe:duration-200 hover:border-accent hover:text-accent hover:shadow-[0_0_20px_color-mix(in_srgb,var(--color-accent)_18%,transparent)]";
 
 const primaryButtonClass =
   "inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-3.5 font-mono text-label-code font-semibold text-accent-foreground shadow-[0_0_24px_color-mix(in_srgb,var(--color-accent)_35%,transparent)] motion-safe:transition motion-safe:duration-200 hover:shadow-[0_0_28px_color-mix(in_srgb,var(--color-accent)_50%,transparent)] motion-safe:hover:-translate-y-px";
@@ -95,7 +95,7 @@ function ScrollChevronIcon() {
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
-      className="size-6 motion-safe:animate-scroll-cue-bounce"
+      className="size-6"
       fill="none"
     >
       <path

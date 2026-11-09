@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -46,10 +44,14 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 
   const title = `${project.title} | ${profile.name}`;
+  const image = getProjectPageImage(project);
 
   return {
-    title,
+    title: project.title,
     description: project.tagline,
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+    },
     openGraph: {
       title,
       description: project.tagline,
@@ -57,10 +59,16 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       url: `/projects/${project.slug}`,
       images: [
         {
-          url: getProjectPageImage(project),
+          url: image,
           alt: `Screenshot of ${project.title}`,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: project.tagline,
+      images: [image],
     },
   };
 }
@@ -82,7 +90,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <span className="sr-only">Top of page</span>
       </div>
       <TopBar name={profile.name} resumePath={profile.resumePath} backHref="/" />
-      <main className="relative overflow-hidden">
+      <main id="main" tabIndex={-1} className="relative overflow-hidden outline-none">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,var(--color-glow-cyan),transparent_70%)]"
@@ -156,8 +164,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   key={item.name}
                   className="rounded-2xl border border-border bg-card p-5 motion-safe:transition motion-safe:duration-200 hover:border-accent/40"
                 >
-                  <h3 className="font-mono text-label-code text-accent">{item.name}</h3>
-                  <p className="mt-2 text-body-sm leading-relaxed text-muted">{item.reason}</p>
+                  <h3 className="font-mono text-body-md font-medium break-words text-accent">{item.name}</h3>
+                  <p className="mt-2 text-pretty text-body-md leading-relaxed text-muted">{item.reason}</p>
                 </li>
               ))}
             </ul>
@@ -211,14 +219,13 @@ function MetaItem({
       <dt className="font-mono text-label-code-sm tracking-wide text-accent uppercase">
         {label}
       </dt>
-      <dd className="mt-1 text-body-sm text-pretty text-text">{value}</dd>
+      <dd className="mt-1 text-body-md text-pretty text-text">{value}</dd>
     </div>
   );
 }
 
 function ProjectMedia({ project }: { project: Project }) {
   const imageSrc = getProjectPageImage(project);
-  const { width, height } = getPublicImageSize(imageSrc);
 
   return (
     <figure className="overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_12px_40px_rgb(0_0_0/0.35)]">
@@ -240,51 +247,23 @@ function ProjectMedia({ project }: { project: Project }) {
           preload="metadata"
           poster={imageSrc}
           src={project.demoVideo}
+          aria-label={`Demo of ${project.title}`}
           className="aspect-video w-full bg-surface"
         />
       ) : (
-        <Image
-          src={imageSrc}
-          alt={`Screenshot of ${project.title}`}
-          width={width}
-          height={height}
-          priority
-          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 960px"
-          className="block h-auto w-full"
-          style={{ width: "100%", height: "auto" }}
-        />
+        <div className="relative aspect-video w-full bg-surface">
+          <Image
+            src={imageSrc}
+            alt={`Screenshot of ${project.title}`}
+            fill
+            priority
+            sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 960px"
+            className="object-cover object-center"
+          />
+        </div>
       )}
     </figure>
   );
-}
-
-function getPublicImageSize(src: string): { width: number; height: number } {
-  const relative = src.startsWith("/") ? src.slice(1) : src;
-  const filePath = path.join(process.cwd(), "public", ...relative.split("/"));
-  const data = fs.readFileSync(filePath);
-
-  if (data[0] === 0x89 && data.toString("ascii", 1, 4) === "PNG") {
-    return { width: data.readUInt32BE(16), height: data.readUInt32BE(20) };
-  }
-
-  if (data.toString("ascii", 0, 4) === "RIFF" && data.toString("ascii", 8, 12) === "WEBP") {
-    const format = data.toString("ascii", 12, 16);
-    if (format === "VP8X") {
-      return { width: 1 + data.readUIntLE(24, 3), height: 1 + data.readUIntLE(27, 3) };
-    }
-    if (format === "VP8 ") {
-      return {
-        width: data.readUInt16LE(26) & 0x3fff,
-        height: data.readUInt16LE(28) & 0x3fff,
-      };
-    }
-    if (format === "VP8L") {
-      const bits = data.readUInt32LE(21);
-      return { width: 1 + (bits & 0x3fff), height: 1 + ((bits >> 14) & 0x3fff) };
-    }
-  }
-
-  throw new Error(`Could not read the size of ${src}`);
 }
 
 function ChevronRightIcon() {

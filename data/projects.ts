@@ -107,8 +107,8 @@ export const projects: Project[] = [
     title: "Smart Parent-Teacher Meeting Management System",
     tagline:
       "An intelligent scheduling system that automatically organizes parent-teacher meetings while considering family relationships and scheduling constraints.",
-    coverImage: "/images/parent-teacher-meeting-system-card.png",
-    pageImage: "/images/parent-teacher-meeting-system-page.png",
+    coverImage: "/images/parent-teacher-meeting-system-card.webp",
+    pageImage: "/images/parent-teacher-meeting-system-page.webp",
     coverFit: "contain",
     tags: [
       "C#",
