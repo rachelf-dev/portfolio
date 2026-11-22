@@ -49,6 +49,7 @@ My projects demonstrate my practical development experience, problem-solving ski
 - highlight label: Hackathon Finalist
 - highlight detail: Selected as a finalist at Hackathon AI, organized by Open Source - Placement, 2026
 - live URL: https://phoenix-hebrew-rag-bot-1.onrender.com/
+- wake URL: https://phoenix-hebrew-rag-bot-1.onrender.com/
 - GitHub URL: https://github.com/rachelf-dev/phoenix-hebrew-rag-bot
 - order: 1
 
@@ -82,6 +83,7 @@ Developed a Hebrew RAG chatbot that answers natural-language questions using onl
 - duration: 2 months
 - type: study
 - live URL: none
+- wake URL: none
 - GitHub URL: https://github.com/rachelf-dev/parent-meeting
 - order: 2
 
@@ -112,6 +114,7 @@ Developed a full-stack platform with an intelligent scheduling algorithm that au
 - duration: 1 month
 - type: study
 - live URL: https://calorie-counter-app1.netlify.app/
+- wake URL: https://calorie-counter-app-dwji.onrender.com/api/health
 - GitHub URL: https://github.com/rachelf-dev/calorie-counter-app
 - order: 3
 

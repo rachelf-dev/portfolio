@@ -4,11 +4,13 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Projects } from "@/components/Projects";
 import { TopBar } from "@/components/TopBar";
+import { WarmUp } from "@/components/WarmUp";
 import { profile } from "@/data/profile";
 
 export default function HomePage() {
   return (
     <>
+      <WarmUp />
       <div id="top" tabIndex={-1} className="h-px w-full focus:outline-none">
         <span className="sr-only">Top of page</span>
       </div>

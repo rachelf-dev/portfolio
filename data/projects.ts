@@ -12,6 +12,7 @@ export type Project = {
   type: "study" | "personal" | "hackathon";
   highlight?: { label: string; detail?: string }; // optional accolade on the card and project page
   liveUrl?: string;
+  wakeUrl?: string;
   githubUrl?: string;
   problem: string;
   solution: string;
@@ -48,6 +49,7 @@ export const projects: Project[] = [
         "Selected as a finalist at Hackathon AI, organized by Open Source - Placement, 2026",
     },
     liveUrl: "https://phoenix-hebrew-rag-bot-1.onrender.com/",
+    wakeUrl: "https://phoenix-hebrew-rag-bot-1.onrender.com/",
     githubUrl: "https://github.com/rachelf-dev/phoenix-hebrew-rag-bot",
     problem:
       "Users need to search through more than 1,000 pages of website content to find relevant information, making information retrieval time-consuming and difficult.",
@@ -178,6 +180,7 @@ export const projects: Project[] = [
     duration: "1 month",
     type: "study",
     liveUrl: "https://calorie-counter-app1.netlify.app/",
+    wakeUrl: "https://calorie-counter-app-dwji.onrender.com/api/health",
     githubUrl: "https://github.com/rachelf-dev/calorie-counter-app",
     problem:
       "Tracking daily calories usually means searching a long food list, entering quantities and checking totals by hand, which is slow and easy to abandon.",

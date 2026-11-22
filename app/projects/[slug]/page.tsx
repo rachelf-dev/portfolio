@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { HighlightBanner } from "@/components/HighlightBadge";
 import { TechTag } from "@/components/TechTag";
 import { TopBar } from "@/components/TopBar";
+import { WarmUp } from "@/components/WarmUp";
 import { profile } from "@/data/profile";
 import {
   getAdjacentProjects,
@@ -86,6 +87,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <>
+      <WarmUp slug={project.slug} />
       <div id="top" tabIndex={-1} className="h-px w-full focus:outline-none">
         <span className="sr-only">Top of page</span>
       </div>

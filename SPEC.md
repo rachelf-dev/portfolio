@@ -172,6 +172,7 @@ type Project = {
   type: "study" | "personal" | "hackathon";
   highlight?: { label: string; detail?: string }; // { label: "Hackathon Finalist", detail: "Selected as a finalist at Hackathon AI, organized by Open Source - Placement, 2026" }
   liveUrl?: string;
+  wakeUrl?: string;        // optional URL to ping to wake the project's backend
   githubUrl?: string;
   problem: string;
   solution: string;
