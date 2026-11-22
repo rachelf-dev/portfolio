@@ -47,7 +47,7 @@ export const projects: Project[] = [
       detail:
         "Selected as a finalist at Hackathon AI, organized by Open Source - Placement, 2026",
     },
-    liveUrl: "https://phoenix-rag-production.up.railway.app/",
+    liveUrl: "https://phoenix-hebrew-rag-bot-1.onrender.com/",
     githubUrl: "https://github.com/rachelf-dev/phoenix-hebrew-rag-bot",
     problem:
       "Users need to search through more than 1,000 pages of website content to find relevant information, making information retrieval time-consuming and difficult.",

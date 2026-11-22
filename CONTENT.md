@@ -48,7 +48,7 @@ My projects demonstrate my practical development experience, problem-solving ski
 - type: hackathon
 - highlight label: Hackathon Finalist
 - highlight detail: Selected as a finalist at Hackathon AI, organized by Open Source - Placement, 2026
-- live URL: https://phoenix-rag-production.up.railway.app/
+- live URL: https://phoenix-hebrew-rag-bot-1.onrender.com/
 - GitHub URL: https://github.com/rachelf-dev/phoenix-hebrew-rag-bot
 - order: 1
 
